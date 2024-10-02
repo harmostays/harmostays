@@ -3,9 +3,9 @@
         <div class="text-paginate">
             <h2 class="text">
                 @if($rows->total() > 1)
-                    {{ __(":count spaces found",['count'=>$rows->total()]) }}
+                    {{ __(":count stays found",['count'=>$rows->total()]) }}
                 @else
-                    {{ __(":count space found",['count'=>$rows->total()]) }}
+                    {{ __(":count stay found",['count'=>$rows->total()]) }}
                 @endif
             </h2>
             <span class="count-string">{{ __("Showing :from - :to of :total Spaces",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span>
@@ -25,7 +25,7 @@
         </div>
     @else
         <div class="not-found-box">
-            <h3 class="n-title">{{__("We couldn't find any spaces.")}}</h3>
+            <h3 class="n-title">{{__("We couldn't find any stays.")}}</h3>
             <p class="p-desc">{{__("Try changing your filter criteria")}}</p>
         </div>
     @endif
