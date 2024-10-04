@@ -962,7 +962,7 @@ class General extends Seeder
                 ),
             ),
             array(
-                'name'       => 'Space',
+                'name'       => 'Stay',
                 'url'        => $locale.'/space',
                 'item_model' => 'custom',
                 'model_name' => 'Custom',

@@ -43,7 +43,7 @@ class ModuleProvider extends ModuleServiceProvider
             'space'=>[
                 "position"=>41,
                 'url'        => route('space.admin.index'),
-                'title'      => __('Space'),
+                'title'      => __('Stay'),
                 'icon'       => 'ion ion-md-home',
                 'permission' => 'space_view',
                 'children'   => [

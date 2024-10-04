@@ -26,17 +26,17 @@ return [
         ],
         [
             'url'=>'https://sandbox.bookingcore.co/en/page/space',
-            'name'=>'Home Space',
+            'name'=>'Home Stay',
             'thumb'=>'img/demo/home-space.png',
         ],
         [
             'url'=>'https://sandbox.bookingcore.co/en/space',
-            'name'=>'Space Search',
+            'name'=>'Stay Search',
             'thumb'=>'img/demo/space-search.png'
         ],
         [
             'url'=>'https://sandbox.bookingcore.co/en/space/stay-greenwich-village',
-            'name'=>'Single Space',
+            'name'=>'Single Stay',
             'thumb'=>'img/demo/single-space.png'
         ],
         [

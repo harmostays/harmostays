@@ -78,7 +78,7 @@ class SpaceController extends AdminController
             'space_manage_others' => $this->hasPermission('space_manage_others'),
             'breadcrumbs'        => [
                 [
-                    'name' => __('Spaces'),
+                    'name' => __('Stays'),
                     'url'  => route('space.admin.index')
                 ],
                 [
@@ -114,7 +114,7 @@ class SpaceController extends AdminController
             'recovery'           => 1,
             'breadcrumbs'        => [
                 [
-                    'name' => __('Spaces'),
+                    'name' => __('Stays'),
                     'url'  => route('space.admin.index')
                 ],
                 [
@@ -142,15 +142,15 @@ class SpaceController extends AdminController
             'translation'    => new $this->space_translation(),
             'breadcrumbs'    => [
                 [
-                    'name' => __('Spaces'),
+                    'name' => __('Stays'),
                     'url'  => route('space.admin.index')
                 ],
                 [
-                    'name'  => __('Add Space'),
+                    'name'  => __('Add Stay'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'     => __("Add new Space")
+            'page_title'     => __("Add new Stay")
         ];
         return view('Space::admin.detail', $data);
     }
@@ -178,11 +178,11 @@ class SpaceController extends AdminController
             'enable_multi_lang'=>true,
             'breadcrumbs'    => [
                 [
-                    'name' => __('Spaces'),
+                    'name' => __('Stays'),
                     'url'  => route('space.admin.index')
                 ],
                 [
-                    'name'  => __('Edit Space'),
+                    'name'  => __('Edit Stay'),
                     'class' => 'active'
                 ],
             ],
@@ -265,11 +265,11 @@ class SpaceController extends AdminController
             if($id > 0 ){
                 event(new UpdatedServiceEvent($row));
 
-                return back()->with('success',  __('Space updated') );
+                return back()->with('success',  __('Stay updated') );
             }else{
                 event(new CreatedServicesEvent($row));
 
-                return redirect(route('space.admin.edit',$row->id))->with('success', __('Space created') );
+                return redirect(route('space.admin.edit',$row->id))->with('success', __('Stay created') );
             }
         }
     }
