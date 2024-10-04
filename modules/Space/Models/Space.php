@@ -721,9 +721,9 @@ class Space extends Bookable
         }
         if(empty($number)) return false;
         if ($number > 1) {
-            return __(":number Spaces", ['number' => $number]);
+            return __(":number Stays", ['number' => $number]);
         }
-        return __(":number Space", ['number' => $number]);
+        return __(":number Stay", ['number' => $number]);
     }
 
     /**
