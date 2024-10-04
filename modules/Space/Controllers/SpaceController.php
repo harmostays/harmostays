@@ -79,7 +79,7 @@ class SpaceController extends Controller
                 'fragments'=>[
                     '.ajax-search-result'=>view('Space::frontend.ajax.search-result'.($for_map ? '-map' : ''), $data)->render(),
                     '.result-count'=>$list->total() ? ($list->total() > 1 ? __(":count spaces found",['count'=>$list->total()]) : __(":count space found",['count'=>$list->total()])) : '',
-                    '.count-string'=> $list->total() ? __("Showing :from - :to of :total Spaces",["from"=>$list->firstItem(),"to"=>$list->lastItem(),"total"=>$list->total()]) : ''
+                    '.count-string'=> $list->total() ? __("Showing :from - :to of :total Stays",["from"=>$list->firstItem(),"to"=>$list->lastItem(),"total"=>$list->total()]) : ''
                 ]
             ]);
         }
@@ -128,7 +128,7 @@ class SpaceController extends Controller
             'body_class'=>'is_single',
             'breadcrumbs'       => [
                 [
-                    'name'  => __('Space'),
+                    'name'  => __('Stay'),
                     'url'  => route('space.search'),
                 ],
             ],
