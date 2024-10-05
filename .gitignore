@@ -11,6 +11,7 @@ public/dist/admin
 storage/app/*
 !storage/app/public/
 storage/app/public/*
+storage/logs/
 storage/framework/
 !storage/app/public/demo/
 /vendor

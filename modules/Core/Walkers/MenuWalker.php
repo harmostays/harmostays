@@ -55,14 +55,22 @@
 				}
 				$class.=' depth-'.($depth);
 				printf('<li class="%s">', $class);
+				$original_name = $item['name'];
+
 				if (!empty($item['children'])) {
-					$item['name'] .= ' <i class="caret fa fa-angle-down"></i>';
+					if ($item['name'] == 'Other Services'){
+						$item['name'] .= ' <i class="caret fa fa-angle-down"></i>';
+					} else {
+						$item['name'] .= ' <i class="caret"></i>';
+					}
 				}
 				printf('<a  target="%s" href="%s" >%s</a>', e($item['target']), e($url), clean($item['name']));
-				if (!empty($item['children'])) {
-					echo '<ul class="children-menu menu-dropdown">';
-					echo $html;
-					echo "</ul>";
+				if ($original_name == 'Other Services'){
+						if (!empty($item['children'])) {
+						echo '<ul class="children-menu menu-dropdown">';
+						echo $html;
+						echo "</ul>";
+					}
 				}
 				echo '</li>';
 			}
