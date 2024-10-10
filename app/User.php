@@ -30,7 +30,7 @@
     use Illuminate\Database\Eloquent\SoftDeletes;
     use Illuminate\Support\Facades\Auth;
 
-    class User extends Authenticatable implements MustVerifyEmail
+    class User extends \TCG\Voyager\Models\User implements MustVerifyEmail
     {
         use SoftDeletes;
         use Notifiable;

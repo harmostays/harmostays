@@ -27,3 +27,8 @@ Route::get(config('admin.admin_route_prefix').'/logs', '\Rap2hpoutre\LaravelLogV
 
 Route::get('/install','InstallerController@redirectToRequirement')->name('LaravelInstaller::welcome');
 Route::get('/install/environment','InstallerController@redirectToWizard')->name('LaravelInstaller::environment');
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
