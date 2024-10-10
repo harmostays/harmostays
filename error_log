@@ -175,3 +175,15 @@
 [10-Oct-2024 13:14:10 UTC] PHP Deprecated:  Using ${var} in strings is deprecated, use {$var} instead in /home/wpgxubae/public_html/app/Helpers/AppHelper.php on line 1186
 [10-Oct-2024 13:14:10 UTC] PHP Deprecated:  Using ${var} in strings is deprecated, use {$var} instead in /home/wpgxubae/public_html/app/Helpers/AppHelper.php on line 1188
 [10-Oct-2024 16:14:15 Africa/Nairobi] PHP Fatal error:  Cannot declare class CreateMenuTable, because the name is already in use in /home/wpgxubae/public_html/database/migrations/2019_04_01_150630_create_menu_table.php on line 7
+[10-Oct-2024 14:26:19 UTC] PHP Deprecated:  Using ${var} in strings is deprecated, use {$var} instead in /home/wpgxubae/public_html/app/Helpers/AppHelper.php on line 1186
+[10-Oct-2024 14:26:19 UTC] PHP Deprecated:  Using ${var} in strings is deprecated, use {$var} instead in /home/wpgxubae/public_html/app/Helpers/AppHelper.php on line 1186
+[10-Oct-2024 14:26:19 UTC] PHP Deprecated:  Using ${var} in strings is deprecated, use {$var} instead in /home/wpgxubae/public_html/app/Helpers/AppHelper.php on line 1188
+[10-Oct-2024 14:26:20 UTC] PHP Deprecated:  Using ${var} in strings is deprecated, use {$var} instead in /home/wpgxubae/public_html/app/Helpers/AppHelper.php on line 1186
+[10-Oct-2024 14:26:20 UTC] PHP Deprecated:  Using ${var} in strings is deprecated, use {$var} instead in /home/wpgxubae/public_html/app/Helpers/AppHelper.php on line 1186
+[10-Oct-2024 14:26:20 UTC] PHP Deprecated:  Using ${var} in strings is deprecated, use {$var} instead in /home/wpgxubae/public_html/app/Helpers/AppHelper.php on line 1188
+[10-Oct-2024 14:26:21 UTC] PHP Deprecated:  Using ${var} in strings is deprecated, use {$var} instead in /home/wpgxubae/public_html/app/Helpers/AppHelper.php on line 1186
+[10-Oct-2024 14:26:21 UTC] PHP Deprecated:  Using ${var} in strings is deprecated, use {$var} instead in /home/wpgxubae/public_html/app/Helpers/AppHelper.php on line 1186
+[10-Oct-2024 14:26:21 UTC] PHP Deprecated:  Using ${var} in strings is deprecated, use {$var} instead in /home/wpgxubae/public_html/app/Helpers/AppHelper.php on line 1188
+[10-Oct-2024 14:26:22 UTC] PHP Deprecated:  Using ${var} in strings is deprecated, use {$var} instead in /home/wpgxubae/public_html/app/Helpers/AppHelper.php on line 1186
+[10-Oct-2024 14:26:22 UTC] PHP Deprecated:  Using ${var} in strings is deprecated, use {$var} instead in /home/wpgxubae/public_html/app/Helpers/AppHelper.php on line 1186
+[10-Oct-2024 14:26:22 UTC] PHP Deprecated:  Using ${var} in strings is deprecated, use {$var} instead in /home/wpgxubae/public_html/app/Helpers/AppHelper.php on line 1188
