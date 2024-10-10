@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
     /*
@@ -25,5 +24,15 @@ Route::get('social-callback/{provider}', 'Auth\LoginController@socialCallBack');
 // Logs
 Route::get(config('admin.admin_route_prefix').'/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware(['auth', 'dashboard','system_log_view'])->name('admin.logs');
 
-Route::get('/install','InstallerController@redirectToRequirement')->name('LaravelInstaller::welcome');
-Route::get('/install/environment','InstallerController@redirectToWizard')->name('LaravelInstaller::environment');
+Route::get('/install', 'InstallerController@redirectToRequirement')->name('LaravelInstaller::welcome');
+Route::get('/install/environment', 'InstallerController@redirectToWizard')->name('LaravelInstaller::environment');
+
+// // Admin routes
+// Route::group(['prefix' => 'admin'], function () {
+//     // Custom admin index route
+//     Route::get('/', 'AdminController@index')->name('admin.index'); // Define the admin index route
+
+//     // Voyager routes
+//     Voyager::routes();
+// });
+
