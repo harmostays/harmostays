@@ -74,7 +74,7 @@
                                 <h6 class="font-weight-bold text-gray-3">
                                     <a href="#">{{$userInfo->getDisplayName()}}</a>
                                 </h6>
-                                <div class="font-weight-normal font-size-14 text-gray-9 mb-2">{{display_datetime($item->created_at)}}</div>
+                                {{-- <div class="font-weight-normal font-size-14 text-gray-9 mb-2">{{display_datetime($item->created_at)}}</div> --}}
                                 <div class="d-flex align-items-center flex-column flex-md-row mb-2">
                                     @if($item->rate_number)
                                         <button type="button" class="btn btn-xs btn-primary rounded-xs font-size-14 py-1 px-2 mr-2 mb-2 mb-md-0">{{$item->rate_number}} /5 </button>
