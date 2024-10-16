@@ -26,11 +26,28 @@
         <i class="input-icon field-icon icofont-mail"></i>
         <span class="invalid-feedback error error-email"></span>
     </div>
-    <div class="form-group">
+    <div class="form-group" style="position: relative;">
         <input type="password" class="form-control" name="password" autocomplete="off" placeholder="{{__('Password')}}">
-        <i class="input-icon field-icon icofont-ui-password"></i>
+        <span toggle="#password" class="fa fa-fw fa-eye toggle-password" style="cursor: pointer; position: absolute; top: 50%; right: 15px; transform: translateY(-50%);"></span>
         <span class="invalid-feedback error error-password"></span>
     </div>
+    
+    <script>
+        document.querySelector('.toggle-password').addEventListener('click', function (e) {
+            const passwordField = document.querySelector('#password');
+            const icon = e.target;
+                        if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
+    </script>
+
     <div class="form-group">
         <label for="term">
             <input id="term" type="checkbox" name="term" class="mr5">
