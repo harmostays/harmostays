@@ -13,6 +13,7 @@ storage/app/*
 storage/app/public/*
 storage/framework/
 !storage/app/public/demo/
+/storage/debugbar/*
 /vendor
 /.idea/*
 !.idea/codeStyles/*
