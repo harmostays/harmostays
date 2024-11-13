@@ -12,22 +12,6 @@
         <span class="invalid-feedback error error-password"></span>
     </div>
     
-    <script>
-        document.querySelector('.toggle-password').addEventListener('click', function (e) {
-            const passwordField = document.querySelector('#password');
-            const icon = e.target;
-                        if (passwordField.type === 'password') {
-                passwordField.type = 'text';
-                icon.classList.remove('fa-eye');
-                icon.classList.add('fa-eye-slash');
-            } else {
-                passwordField.type = 'password';
-                icon.classList.remove('fa-eye-slash');
-                icon.classList.add('fa-eye');
-            }
-        });
-    </script>
-    
     <div class="form-group">
         <div class="d-flex justify-content-between">
             <label for="remember-me" class="mb0">
@@ -43,7 +27,12 @@
     @endif
     <div class="error message-error invalid-feedback"></div>
     <div class="form-group">
-        <button class="btn btn-primary form-submit" type="submit">
+        <button 
+            class="btn btn-primary form-submit g-recaptcha" 
+            data-sitekey="{{ config('services.recaptcha.key') }}"
+            data-callback='onSubmit' 
+            data-action='submit'
+            type="submit">
             {{ __('Login') }}
             <span class="spinner-grow spinner-grow-sm icon-loading" role="status" aria-hidden="true"></span>
         </button>

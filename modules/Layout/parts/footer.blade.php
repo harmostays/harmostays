@@ -109,7 +109,7 @@
 <script type="text/javascript" src="{{ asset("libs/daterange/daterangepicker.min.js") }}"></script>
 <script src="{{ asset('libs/select2/js/select2.min.js') }}"></script>
 <script src="{{ asset('js/functions.js?_ver='.config('app.asset_version')) }}"></script>
-
+<script src="https://www.google.com/recaptcha/api.js"></script>
 @if(
     setting_item('tour_location_search_style')=='autocompletePlace' || setting_item('hotel_location_search_style')=='autocompletePlace' || setting_item('car_location_search_style')=='autocompletePlace' || setting_item('space_location_search_style')=='autocompletePlace' || setting_item('hotel_location_search_style')=='autocompletePlace' || setting_item('event_location_search_style')=='autocompletePlace'
 )
@@ -117,6 +117,24 @@
 @endif
 <script src="{{ asset('libs/pusher.min.js') }}"></script>
 <script src="{{ asset('js/home.js?_ver='.config('app.asset_version')) }}"></script>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		document.querySelector('.toggle-password').addEventListener('click', function (e) {
+			const passwordField = document.querySelector('#password');
+			const icon = e.target;
+			if (passwordField.type === 'password') {
+				passwordField.type = 'text';
+				icon.classList.remove('fa-eye');
+				icon.classList.add('fa-eye-slash');
+			} else {
+				passwordField.type = 'password';
+				icon.classList.remove('fa-eye-slash');
+				icon.classList.add('fa-eye');
+			}
+		});
+	});
+</script>
 
 @if(!empty($is_user_page))
 	<script src="{{ asset('module/user/js/user.js?_ver='.config('app.asset_version')) }}"></script>
