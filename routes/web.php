@@ -35,4 +35,24 @@ Route::get('/install/environment', 'InstallerController@redirectToWizard')->name
 //     // Voyager routes
 //     Voyager::routes();
 // });
+use Spatie\Sitemap\Sitemap;
+use Spatie\Sitemap\Tags\Url;
+
+Route::get('/generate-sitemap', function () {
+    Sitemap::create()
+        ->add(Url::create('/home'))
+        ->add(Url::create('/stays'))
+        ->add(Url::create('/hotel'))
+        ->add(Url::create('/car'))
+        ->add(Url::create('/tour'))
+        ->add(Url::create('/event'))
+        ->writeToFile(public_path('sitemap.xml'));
+
+    return 'Sitemap generated successfully!';
+});
+Route::get('/terms', function () {
+    return view('terms');
+});
+
+
 

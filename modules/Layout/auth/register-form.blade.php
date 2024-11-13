@@ -34,9 +34,9 @@
     
     <script>
         document.querySelector('.toggle-password').addEventListener('click', function (e) {
-            const passwordField = document.querySelector('#password');
+            const passwordField = e.target.closest('.form-group').querySelector('input[name="password"]');
             const icon = e.target;
-                        if (passwordField.type === 'password') {
+            if (passwordField.type === 'password') {
                 passwordField.type = 'text';
                 icon.classList.remove('fa-eye');
                 icon.classList.add('fa-eye-slash');
@@ -47,6 +47,7 @@
             }
         });
     </script>
+    
 
     <div class="form-group">
         <label for="term">
