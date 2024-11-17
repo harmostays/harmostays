@@ -1,5 +1,5 @@
 <div class="modal fade login" id="login" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="border-radius: 12px;">
         <div class="modal-content relative">
             <div class="modal-header">
                 <h4 class="modal-title">{{__('Log In')}}</h4>
@@ -16,7 +16,7 @@
     </div>
 </div>
 <div class="modal fade login" id="register" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="max-height: 80vh; overflow: auto; -ms-overflow-style: none; scrollbar-width: none; padding-top: 90px; border-radius: 12px;">
         <div class="modal-content relative">
             <div class="modal-header">
                 <h4 class="modal-title">{{__('Sign Up')}}</h4>
@@ -26,7 +26,7 @@
                     </i>
                 </span>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="-ms-overflow-style: none; scrollbar-width: none;">
                 @include('Layout::auth/register-form')
             </div>
         </div>
