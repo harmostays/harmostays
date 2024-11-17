@@ -68,9 +68,9 @@
             </div>
         </div>
     @endif
-    {{-- @if(is_enable_registration()) --}}
+    @if(is_enable_registration())
         <div class="c-grey font-medium f14 text-center"> {{__('Do not have an account?')}} <a href="" data-target="#register" data-toggle="modal">{{__('Sign Up')}}</a></div>
-    {{-- @endif --}}
+    @endif
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             document.querySelector('.toggle-password').addEventListener('click', function (e) {
