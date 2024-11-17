@@ -2,8 +2,6 @@
 
 namespace App\Actions\Fortify;
 
-use Laravel\Fortify\Rules\Password;
-
 trait PasswordValidationRules
 {
     /**
@@ -14,13 +12,11 @@ trait PasswordValidationRules
     protected function passwordRules()
     {
         return [
-            'required',
-            'string',
-            (new Password)
-                ->length(8)
-                ->requireUppercase()
-                ->requireNumeric(false)
-                ->requireSpecialCharacter(false),
-            'confirmed',
-        ];    }
+            'required', 
+            'string', 
+            'min:8',
+            'regex:/[A-Z]/',
+            'confirmed'
+        ];
+    }
 }
