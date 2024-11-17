@@ -30,24 +30,7 @@
         <input type="password" class="form-control" name="password" autocomplete="off" placeholder="{{__('Password')}}">
         <span toggle="#password" class="fa fa-fw fa-eye toggle-password" style="cursor: pointer; position: absolute; top: 50%; right: 15px; transform: translateY(-50%);"></span>
         <span class="invalid-feedback error error-password"></span>
-    </div>
-    
-    <script>
-        document.querySelector('.toggle-password').addEventListener('click', function (e) {
-            const passwordField = e.target.closest('.form-group').querySelector('input[name="password"]');
-            const icon = e.target;
-            if (passwordField.type === 'password') {
-                passwordField.type = 'text';
-                icon.classList.remove('fa-eye');
-                icon.classList.add('fa-eye-slash');
-            } else {
-                passwordField.type = 'password';
-                icon.classList.remove('fa-eye-slash');
-                icon.classList.add('fa-eye');
-            }
-        });
-    </script>
-    
+    </div> 
 
     <div class="form-group">
         <label for="term">

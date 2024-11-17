@@ -31,7 +31,7 @@
             class="btn btn-primary form-submit g-recaptcha" 
             data-sitekey="{{ config('services.recaptcha.key') }}"
             data-callback='onSubmit' 
-            data-action='submit'
+            data-action='login'
             type="submit">
             {{ __('Login') }}
             <span class="spinner-grow spinner-grow-sm icon-loading" role="status" aria-hidden="true"></span>
@@ -71,5 +71,23 @@
     @if(is_enable_registration())
         <div class="c-grey font-medium f14 text-center"> {{__('Do not have an account?')}} <a href="" data-target="#register" data-toggle="modal">{{__('Sign Up')}}</a></div>
     @endif
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('.toggle-password').addEventListener('click', function (e) {
+                const passwordField = document.querySelector('#password');
+                const icon = e.target;
+                if (passwordField.type === 'password') {
+                    passwordField.type = 'text';
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                } else {
+                    passwordField.type = 'password';
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                }
+            });
+        });
+    </script>
 
 </form>
