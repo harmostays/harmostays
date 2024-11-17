@@ -28,10 +28,7 @@
     <div class="error message-error invalid-feedback"></div>
     <div class="form-group">
         <button 
-            class="btn btn-primary form-submit" 
-            {{-- data-sitekey="{{ config('services.recaptcha.key') }}"
-            data-callback='onSubmit' 
-            data-action='login' --}}
+            class="btn btn-primary form-submit"
             type="submit">
             {{ __('Login') }}
             <span class="spinner-grow spinner-grow-sm icon-loading" role="status" aria-hidden="true"></span>
