@@ -16,8 +16,8 @@
     </div>
 </div>
 <div class="modal fade login" id="register" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document" style="max-height: 80vh; overflow: auto; -ms-overflow-style: none; scrollbar-width: none; padding-top: 90px; border-radius: 12px;">
-        <div class="modal-content relative">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content relative" style="max-height: 80vh; overflow-y: scroll; -ms-overflow-style: none; scrollbar-width: none; border-radius: 12px;">
             <div class="modal-header">
                 <h4 class="modal-title">{{__('Sign Up')}}</h4>
                 <span class="c-pointer" data-dismiss="modal" aria-label="Close">

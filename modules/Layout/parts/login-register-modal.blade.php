@@ -19,7 +19,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document" style="max-height: 80vh; overflow-y: scroll;">
         <div class="modal-content relative">
             <div class="modal-header">
-                <h4 class="modal-title" style="padding-top: 80px;">{{__('Sign Up')}}</h4>
+                <h4 class="modal-title">{{__('Sign Up')}}</h4>
                 <span class="c-pointer" data-dismiss="modal" aria-label="Close">
                     <i class="input-icon field-icon fa">
                         <img src="{{url('images/ico_close.svg')}}" alt="close">
