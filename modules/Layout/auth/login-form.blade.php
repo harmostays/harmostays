@@ -1,10 +1,4 @@
-<form class="bravo-form-login" id="bravo-login-form" method="POST" action="{{ route('login') }}">
-    <script src="https://www.google.com/recaptcha/api.js"></script>
-    <script>
-        function onSubmit(token) {
-            document.getElementById('bravo-login-form').submit();
-        }
-    </script>
+<form class="bravo-form-login" method="POST" action="{{ route('login') }}">
     <input type="hidden" name="redirect" value="{{request()->query('redirect')}}">
     @csrf
     <div class="form-group">
@@ -26,14 +20,18 @@
             <a href="{{ route("password.request") }}">{{__('Forgot Password?')}}</a>
         </div>
     </div>
-
+    @if(setting_item("user_enable_login_recaptcha"))
+        <div class="form-group">
+            {{recaptcha_field($captcha_action ?? 'login')}}
+        </div>
+    @endif
     <div class="error message-error invalid-feedback"></div>
     <div class="form-group">
         <button 
-            class="btn btn-primary form-submit g-recaptcha" 
-            data-sitekey="{{ config('services.recaptcha.key') }}" 
-            data-callback="onSubmit" 
-            data-action="login" 
+            class="btn btn-primary form-submit" 
+            {{-- data-sitekey="{{ config('services.recaptcha.key') }}"
+            data-callback='onSubmit' 
+            data-action='login' --}}
             type="submit">
             {{ __('Login') }}
             <span class="spinner-grow spinner-grow-sm icon-loading" role="status" aria-hidden="true"></span>
@@ -70,9 +68,9 @@
             </div>
         </div>
     @endif
-    @if(is_enable_registration())
+    {{-- @if(is_enable_registration()) --}}
         <div class="c-grey font-medium f14 text-center"> {{__('Do not have an account?')}} <a href="" data-target="#register" data-toggle="modal">{{__('Sign Up')}}</a></div>
-    @endif
+    {{-- @endif --}}
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             document.querySelector('.toggle-password').addEventListener('click', function (e) {
