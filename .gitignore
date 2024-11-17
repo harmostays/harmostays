@@ -36,4 +36,5 @@ storage/installed
 public/themes/*/dist
 /resources/GeoLite2-City_20210622/
 /harmostays-backup.sql
-
+error_log
+public/error_log
