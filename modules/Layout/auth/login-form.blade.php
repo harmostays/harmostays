@@ -1,6 +1,10 @@
 <form class="bravo-form-login" method="POST" action="{{ route('login') }}">
     <script src="https://www.google.com/recaptcha/api.js"></script>
-
+    <script>
+        function onSubmit(token) {
+            document.getElementById('bravo-login-form').submit();
+        }
+    </script>
     <input type="hidden" name="redirect" value="{{request()->query('redirect')}}">
     @csrf
     <div class="form-group">
@@ -22,11 +26,7 @@
             <a href="{{ route("password.request") }}">{{__('Forgot Password?')}}</a>
         </div>
     </div>
-    @if(setting_item("user_enable_login_recaptcha"))
-        <div class="form-group">
-            {{recaptcha_field($captcha_action ?? 'login')}}
-        </div>
-    @endif
+
     <div class="error message-error invalid-feedback"></div>
     <div class="form-group">
         <button 
