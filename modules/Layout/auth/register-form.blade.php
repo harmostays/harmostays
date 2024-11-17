@@ -1,4 +1,4 @@
-<form class="form bravo-form-register" method="post" action="{{route('auth.register.store')}}">
+<form class="form bravo-form-register" method="post" action="{{route('auth.register.store')}}" style="max-height: 80vh; overflow-y">
     @csrf
     <div class="row">
         <div class="col-lg-6 col-md-12">
