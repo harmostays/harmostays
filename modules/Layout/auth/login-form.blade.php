@@ -1,4 +1,4 @@
-<form class="bravo-form-login" method="POST" action="{{ route('login') }}">
+<form class="bravo-form-login" id="bravo-login-form" method="POST" action="{{ route('login') }}">
     <script src="https://www.google.com/recaptcha/api.js"></script>
     <script>
         function onSubmit(token) {
@@ -31,9 +31,9 @@
     <div class="form-group">
         <button 
             class="btn btn-primary form-submit g-recaptcha" 
-            data-sitekey="{{ config('services.recaptcha.key') }}"
-            data-callback='onSubmit' 
-            data-action='login'
+            data-sitekey="{{ config('services.recaptcha.key') }}" 
+            data-callback="onSubmit" 
+            data-action="login" 
             type="submit">
             {{ __('Login') }}
             <span class="spinner-grow spinner-grow-sm icon-loading" role="status" aria-hidden="true"></span>
