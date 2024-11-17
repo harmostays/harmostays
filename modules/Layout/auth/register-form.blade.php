@@ -27,11 +27,30 @@
         <span class="invalid-feedback error error-email"></span>
     </div>
     <div class="form-group" style="position: relative;">
-        <input type="password" class="form-control" name="password" autocomplete="off" placeholder="{{__('Password')}}">
-        <span toggle="#password" class="fa fa-fw fa-eye toggle-password" style="cursor: pointer; position: absolute; top: 50%; right: 15px; transform: translateY(-50%);"></span>
+        <input type="password" id="password" class="form-control" name="password" autocomplete="off" placeholder="{{__('Password')}}">
+        <span toggle="#password" class="fa fa-fw fa-eye toggle-password" 
+            onclick="togglePasswordVisibility()" 
+            style="cursor: pointer; position: absolute; top: 50%; right: 15px; transform: translateY(-50%);"></span>
         <span class="invalid-feedback error error-password"></span>
-    </div> 
-
+    </div>
+    
+    <script>
+        function togglePasswordVisibility() {
+            const passwordField = document.getElementById('password');
+            const toggleIcon = document.querySelector('.toggle-password');
+    
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+    </script>
+    
     <div class="form-group">
         <label for="term">
             <input id="term" type="checkbox" name="term" class="mr5">
