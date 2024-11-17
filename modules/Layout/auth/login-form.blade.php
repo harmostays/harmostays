@@ -30,7 +30,10 @@
     <div class="error message-error invalid-feedback"></div>
     <div class="form-group">
         <button 
-            class="btn btn-primary form-submit"
+            class="btn btn-primary form-submit g-recaptcha" 
+            data-sitekey="{{ config('services.recaptcha.key') }}"
+            data-callback='onSubmit' 
+            data-action='login'
             type="submit">
             {{ __('Login') }}
             <span class="spinner-grow spinner-grow-sm icon-loading" role="status" aria-hidden="true"></span>
