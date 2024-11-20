@@ -2,7 +2,126 @@
 $translation = $service->translate();
 $lang_local = app()->getLocale();
 ?>
-<div class="b-panel-title">{{ __('Space information') }}</div>
+
+
+@push('css')
+    <style type="text/css">
+        html,
+        body {
+            background: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+
+        #invoice-print-zone {
+            background: #ffffff;
+            padding: 20px;
+            margin: 60px auto 40px auto;
+            max-width: 900px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .invoice-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .invoice-header img {
+            max-width: 100px;
+        }
+
+        .invoice-header h2 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff9800;
+            margin-bottom: 0;
+        }
+
+        .invoice-header p {
+            margin-top: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table th,
+        table td {
+            padding: 10px;
+            border: 1px solid #cccccc;
+            vertical-align: top;
+        }
+
+        table tr td:first-child {
+            border-left: none;
+            width: 30%;
+        }
+
+        table tr td:last-child {
+            border-right: none;
+            width: 30%;
+        }
+
+        table tr td strong {
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        table tr td h5 {
+            margin-bottom: 0;
+        }
+
+        table tr td p {
+            font-size: 14px;
+            color: #555;
+            font-weight: 600;
+            margin: 5px 0;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #e0e0e0;
+            margin: 20px 0;
+        }
+
+        button {
+            background-color: #ff9800;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #e67e22;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mt20 {
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .row {
+                flex-direction: column;
+            }
+        }
+    </style>
+@endpush
+
+<div class="b-panel-title">{{ __('Stay information') }}</div>
 <div class="b-table-wrap">
     <table class="b-table" cellspacing="0" cellpadding="0">
         <tr>
@@ -26,7 +145,7 @@ $lang_local = app()->getLocale();
             </tr>
         @endif
         <tr>
-            <td class="label">{{ __('Space Name') }}</td>
+            <td class="label">{{ __('Stay Name') }}</td>
             <td class="val">
                 <a href="{{ $service->getDetailUrl() }}">{!! clean($translation->title) !!}</a>
             </td>
@@ -71,7 +190,7 @@ $lang_local = app()->getLocale();
                 <td class="val"><strong>{{ $meta }}</strong></td>
             </tr>
         @endif
-        <tr>
+        {{-- <tr>
             <td class="label">{{ __('Pricing') }}</td>
             <td class="val">
                 <table class="b-table pricing-list" width="100%">
@@ -96,7 +215,7 @@ $lang_local = app()->getLocale();
                     @endif
                 </table>
             </td>
-        </tr>
+        </tr> --}}
         <tr>
             <td class="label fsz21">{{ __('Total') }}</td>
             <td class="val fsz21"><strong style="color: #FA5636">{{ format_money($booking->total) }}</strong></td>
