@@ -138,7 +138,7 @@
                     <h5>{{__('Issued On:')}}</h5>
                     <p>{{display_date($booking->created_at)}}</p>
                     <h5>{{__('Due On:')}}</h5>
-                    <p>{{display_date($booking->end_date)}} <!-- Adjust if due date logic differs --></p>
+                    <p>{{display_date($booking->end_date)}}</p>
                 </td>
                 <td>
                     <strong>{{__('Billed From:')}}</strong>
@@ -158,7 +158,11 @@
         </table>
 
         <hr>
-
+        @if(!empty($service->email_new_booking_file))
+            <div class="email_new_booking">
+                @include($service->email_new_booking_file ?? '')
+            </div>
+        @endif
         <div>
             <p><strong>{{__('Note:')}}</strong> {{__('Thank you for choosing Harmostays! If you have any questions about this invoice, please contact us at')}} <a href="mailto:info@harmostays.com">info@harmostays.com</a>.</p>
         </div>
