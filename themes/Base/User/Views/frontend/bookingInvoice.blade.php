@@ -2,15 +2,14 @@
 
 @push('css')
     <style type="text/css">
-        html, body {
+        html,
+        body {
             background: #f4f4f9;
             margin: 0;
             padding: 0;
             font-family: 'Roboto', Arial, sans-serif;
         }
-        .bravo_topbar, .bravo_header, .bravo_footer {
-            display: none;
-        }
+
         #invoice-print-zone {
             background: #ffffff;
             padding: 20px;
@@ -19,81 +18,74 @@
             border-radius: 12px;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
         }
+
         .invoice-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
         }
+
         .invoice-header img {
-            max-width: 180px;
+            max-width: 100px;
         }
+
         .invoice-header h2 {
             font-size: 24px;
             font-weight: bold;
             color: #ff9800;
+            margin-bottom: 0;
         }
-        .invoice-header .invoice-info {
-            text-align: right;
-            color: #757575;
+
+        .invoice-header p {
+            margin-top: 0;
         }
-        .card {
-            background: #ffffff;
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
             margin-bottom: 20px;
-            padding: 15px;
         }
-        .card h5 {
+
+        table th,
+        table td {
+            padding: 10px;
+            border: 1px solid #cccccc;
+            vertical-align: top;
+        }
+
+        table tr td:first-child {
+            border-left: none;
+            width: 30%;
+        }
+
+        table tr td:last-child {
+            border-right: none;
+            width: 30%;
+        }
+
+        table tr td strong {
+            display: block;
             margin-bottom: 15px;
-            font-size: 18px;
-            color: #333;
-            font-weight: bold;
         }
-        .card p {
-            font-size: 16px;
-            color: #757575;
+
+        table tr td h5 {
+            margin-bottom: 0;
+        }
+
+        table tr td p {
+            font-size: 14px;
+            color: #555;
+            font-weight: 600;
             margin: 5px 0;
         }
-        .row {
-            display: flex;
-            gap: 15px;
-        }
-        .col {
-            flex: 1;
-        }
-        .invoice-amount {
-            text-align: center;
-            padding: 10px;
-            background: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            margin-top: 15px;
-        }
-        .invoice-amount .label {
-            font-size: 14px;
-            color: #9e9e9e;
-        }
-        .invoice-amount .amount {
-            font-size: 24px;
-            font-weight: bold;
-            color: #333333;
-        }
+
         hr {
             border: 0;
             border-top: 1px solid #e0e0e0;
             margin: 20px 0;
         }
-        .customer-info h5 {
-            font-size: 18px;
-            font-weight: bold;
-            color: #333333;
-            margin-bottom: 10px;
-        }
-        .customer-info p {
-            font-size: 16px;
-            color: #757575;
-        }
+
         button {
             background-color: #ff9800;
             color: white;
@@ -104,9 +96,19 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
+
         button:hover {
             background-color: #e67e22;
         }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mt20 {
+            margin-top: 20px;
+        }
+
         @media (max-width: 768px) {
             .row {
                 flex-direction: column;
@@ -117,57 +119,53 @@
 
 @section('content')
     <div id="invoice-print-zone">
-        <!-- Invoice Header -->
         <div class="invoice-header">
+            <div class="invoice-info">
+                <h2>{{__("INVOICE")}}</h2>
+                <p><strong>{{__('Invoice #:')}}</strong> {{$booking->id}}</p>
+            </div>
             <div>
                 @if(!empty($logo = setting_item('logo_invoice_id') ?? setting_item('logo_id')))
                     <img src="{{get_file_url($logo, 'full')}}" alt="{{setting_item('site_title')}}">
                 @endif
             </div>
-            <div class="invoice-info">
-                <h2>{{__("INVOICE")}}</h2>
-                <p>{{__('Invoice #: :number', ['number' => $booking->id])}}</p>
-                <p>{{__('Created: :date', ['date' => display_date($booking->created_at)])}}</p>
-            </div>
         </div>
 
-        <!-- Invoice Details -->
-        <div class="row">
-            <div class="card col">
-                <h5>{{__('Company Information')}}</h5>
-                {!! nl2br(setting_item('invoice_company')) !!}
-            </div>
-            <div class="card col">
-                <h5>{{__('Amount Due')}}</h5>
-                <div class="invoice-amount">
-                    <div class="label">{{__("Amount due:")}}</div>
-                    <div class="amount">{{format_money($booking->total - $booking->paid)}}</div>
-                </div>
-            </div>
-        </div>
+        <table>
+            <tr>
+                <td>
+                    <strong>{{__('Dates:')}}</strong>
+                    <h5>{{__('Issued On:')}}</h5>
+                    <p>{{display_date($booking->created_at)}}</p>
+                    <h5>{{__('Due On:')}}</h5>
+                    <p>{{display_date($booking->end_date)}} <!-- Adjust if due date logic differs --></p>
+                </td>
+                <td>
+                    <strong>{{__('Billed From:')}}</strong>
+                    <p>{{setting_item('invoice_company_name', 'Harmostays')}}</p>
+                    <p>{{setting_item('invoice_company_email', 'info@harmostays.com')}}</p>
+                    <p>{{setting_item('invoice_company_phone', '+254 762 301 302')}}</p>
+                </td>
+                <td>
+                    <strong>{{__('Billed To:')}}</strong>
+                    <p>{{$booking->first_name}} {{$booking->last_name}}</p>
+                    <p>{{$booking->email}}</p>
+                    <p>{{$booking->phone}}</p>
+                    <p>{{$booking->address}}</p>
+                    <p>{{implode(', ', [$booking->city, $booking->state, $booking->zip_code, get_country_name($booking->country)])}}</p>
+                </td>
+            </tr>
+        </table>
 
-        <!-- Customer Information -->
         <hr>
-        <div class="customer-info">
-            <h5>{{__('Billing to:')}}</h5>
-            <p>{{$booking->first_name}} {{$booking->last_name}}</p>
-            <p>{{$booking->email}}</p>
-            <p>{{$booking->phone}}</p>
-            <p>{{$booking->address}}</p>
-            <p>{{implode(', ', [$booking->city, $booking->state, $booking->zip_code, get_country_name($booking->country)])}}</p>
-        </div>
 
-        <!-- Booking Details -->
-        <hr>
-        @if(!empty($service->email_new_booking_file))
-            <div class="email_new_booking">
-                @include($service->email_new_booking_file ?? '')
-            </div>
-        @endif
+        <div>
+            <p><strong>{{__('Note:')}}</strong> {{__('Thank you for choosing Harmostays! If you have any questions about this invoice, please contact us at')}} <a href="mailto:info@harmostays.com">info@harmostays.com</a>.</p>
+        </div>
     </div>
 
     <!-- Print Button -->
-    <div style="text-align: center; margin-top: 20px;">
+    <div class="text-center mt20">
         <button onclick="window.print()">{{__("Print Invoice")}}</button>
     </div>
 @endsection
