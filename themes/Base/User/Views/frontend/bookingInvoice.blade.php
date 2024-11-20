@@ -142,8 +142,7 @@
                 </td>
                 <td>
                     <strong>{{__('Billed From:')}}</strong>
-                    <p>{{setting_item('invoice_company_name', 'Harmostays')}}</p>
-                    <p>{{setting_item('invoice_company_info', 'info@harmostays.com')}}</p>
+                    {!! setting_item_with_lang("invoice_company_info") !!}
                     <p>{{setting_item('invoice_company_phone', '+254 762 301 302')}}</p>
                 </td>
                 <td>
