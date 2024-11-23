@@ -86,21 +86,21 @@ $lang_local = app()->getLocale();
             </tr>
         @endif
         <tr>
-            <td class="label">{{__('Pricing')}}</td>
+            <td class="label"></td>
             <td class="val">
                 <table class="pricing-list" width="100%">
                     <tr>
-                        <td class="label fsz21">{{__('Total Reservation Amount')}}</td>
-                        <td class="val fsz21"><strong style="color: #FA5636">{{format_money($booking->total)}}</strong></td>
+                        <td>{{__('Total Reservation Amount')}}</td>
+                        <td class=""><strong style="color: #FA5636">{{format_money($booking->total)}}</strong></td>
                     </tr>
                     <tr>
-                        <td class="label fsz21">{{__('Amount Paid')}}</td>
-                        <td class="val fsz21"><strong style="color: #FA5636">{{format_money($booking->paid)}}</strong></td>
+                        <td>{{__('Amount Paid')}}</td>
+                        <td ><strong style="color: #FA5636">{{format_money($booking->paid)}}</strong></td>
                     </tr>
                     @if($booking->total > $booking->paid)
                         <tr>
-                            <td class="label fsz21">{{__('Amount Due')}}</td>
-                            <td class="val fsz21"><strong style="color: #FA5636">{{format_money($booking->total - $booking->paid)}}</strong></td>
+                            <td>{{__('Amount Due')}}</td>
+                            <td><strong style="color: #FA5636">{{format_money($booking->total - $booking->paid)}}</strong></td>
                         </tr>
                     @endif
                 </table>
