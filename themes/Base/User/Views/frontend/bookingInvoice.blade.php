@@ -88,7 +88,7 @@
         }
 
         table th,
-        table td {
+        invoice-table-header table td {
             padding: 10px;
             border: 1px solid #cccccc;
             vertical-align: top;
@@ -171,31 +171,32 @@
             </div>
         </div>
 
-        <table>
-            <tr>
-                <td>
-                    <strong>{{__('Dates:')}}</strong>
-                    <h5>{{__('Issued On:')}}</h5>
-                    <p>{{display_date($booking->created_at)}}</p>
-                    <h5>{{__('Due By:')}}</h5>
-                    <p>{{display_date($booking->end_date)}}</p>
-                </td>
-                <td>
-                    <strong>{{__('Billed From:')}}</strong>
-                    {!! setting_item_with_lang("invoice_company_info") !!}
-                    <p>{{setting_item('invoice_company_phone', '+254 762 301 302')}}</p>
-                </td>
-                <td>
-                    <strong>{{__('Billed To:')}}</strong>
-                    <p>{{$booking->first_name}} {{$booking->last_name}}</p>
-                    <p>{{$booking->email}}</p>
-                    <p>{{$booking->phone}}</p>
-                    <p>{{$booking->address}}</p>
-                    <p>{{implode(', ', [$booking->city, $booking->state, $booking->zip_code, get_country_name($booking->country)])}}</p>
-                </td>
-            </tr>
-        </table>
-
+        <div class="invoice-table-header">
+            <table>
+                <tr>
+                    <td>
+                        <strong>{{__('Dates:')}}</strong>
+                        <h5>{{__('Issued On:')}}</h5>
+                        <p>{{display_date($booking->created_at)}}</p>
+                        <h5>{{__('Due By:')}}</h5>
+                        <p>{{display_date($booking->end_date)}}</p>
+                    </td>
+                    <td>
+                        <strong>{{__('Billed From:')}}</strong>
+                        {!! setting_item_with_lang("invoice_company_info") !!}
+                        <p>{{setting_item('invoice_company_phone', '+254 762 301 302')}}</p>
+                    </td>
+                    <td>
+                        <strong>{{__('Billed To:')}}</strong>
+                        <p>{{$booking->first_name}} {{$booking->last_name}}</p>
+                        <p>{{$booking->email}}</p>
+                        <p>{{$booking->phone}}</p>
+                        <p>{{$booking->address}}</p>
+                        <p>{{implode(', ', [$booking->city, $booking->state, $booking->zip_code, get_country_name($booking->country)])}}</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
         <hr>
         @if(!empty($service->email_new_booking_file))
             <div class="email_new_booking">
@@ -203,7 +204,7 @@
             </div>
         @endif
         <div>
-            <p><strong>{{__('Note:')}}</strong> {{__('Thank you for choosing Harmostays! If you have any questions about this invoice, please contact us at')}} <a href="mailto:info@harmostays.com">info@harmostays.com</a>.</p>
+            <p><strong>{{__('Thank you for booking with Harmo Stays!')}}</strong></p>
         </div>
     </div>
 
