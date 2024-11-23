@@ -137,7 +137,7 @@
                     <strong>{{__('Dates:')}}</strong>
                     <h5>{{__('Issued On:')}}</h5>
                     <p>{{display_date($booking->created_at)}}</p>
-                    <h5>{{__('Due On:')}}</h5>
+                    <h5>{{__('Due By:')}}</h5>
                     <p>{{display_date($booking->end_date)}}</p>
                 </td>
                 <td>
