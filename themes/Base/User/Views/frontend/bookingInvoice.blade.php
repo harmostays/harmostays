@@ -87,8 +87,8 @@
             margin-bottom: 20px;
         }
 
-        table th,
-        invoice-table-header table td {
+        .invoice-table-header table th,
+        .invoice-table-header table td {
             padding: 10px;
             border: 1px solid #cccccc;
             vertical-align: top;
@@ -203,7 +203,7 @@
                 @include($service->email_new_booking_file ?? '')
             </div>
         @endif
-        <div>
+        <div class="text-center">
             <p><strong>{{__('Thank you for booking with Harmo Stays!')}}</strong></p>
         </div>
     </div>
