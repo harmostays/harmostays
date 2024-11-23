@@ -45,18 +45,21 @@
         .table-service-head th {
             padding: 5px 15px;
         }
+
         #invoice-print-zone {
-            background: white;
-            padding: 15px;
-            margin: 90px auto 40px auto;
-            max-width: 1025px;
+            background: #ffffff;
+            padding: 20px;
+            margin: 60px auto 40px auto;
+            max-width: 900px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
         }
-        .invoice-company-info{
-            margin-top: 15px;
-        }
-        .invoice-company-info p{
-            margin-bottom: 2px;
-            font-weight: normal;
+
+        .invoice-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
         }
 
         .invoice-header img {
@@ -75,33 +78,40 @@
         }
 
 
-        invoice-table-header th,
-        invoice-table-header td {
+
+        invoice-table-header table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        invoice-table-header table th,
+        invoice-table-header table td {
             padding: 10px;
             border: 1px solid #cccccc;
             vertical-align: top;
         }
 
-        invoice-table-header tr td:first-child {
+        invoice-table-header table tr td:first-child {
             border-left: none;
             width: 30%;
         }
 
-        invoice-table-header tr td:last-child {
+        invoice-table-header table tr td:last-child {
             border-right: none;
             width: 30%;
         }
 
-        invoice-table-header tr td strong {
+        invoice-table-header table tr td strong {
             display: block;
             margin-bottom: 15px;
         }
 
-        invoice-table-header tr td h5 {
+        invoice-table-header table tr td h5 {
             margin-bottom: 0;
         }
 
-        invoice-table-header tr td p {
+        invoice-table-header table tr td p {
             font-size: 14px;
             color: #555;
             font-weight: 600;
@@ -131,30 +141,32 @@
             </div>
         </div>
 
-        <table class="invoice-table-header">
-            <tr>
-                <td>
-                    <strong>{{__('Dates:')}}</strong>
-                    <h5>{{__('Issued On:')}}</h5>
-                    <p>{{display_date($booking->created_at)}}</p>
-                    <h5>{{__('Due By:')}}</h5>
-                    <p>{{display_date($booking->end_date)}}</p>
-                </td>
-                <td>
-                    <strong>{{__('Billed From:')}}</strong>
-                    {!! setting_item_with_lang("invoice_company_info") !!}
-                    <p>{{setting_item('invoice_company_phone', '+254 762 301 302')}}</p>
-                </td>
-                <td>
-                    <strong>{{__('Billed To:')}}</strong>
-                    <p>{{$booking->first_name}} {{$booking->last_name}}</p>
-                    <p>{{$booking->email}}</p>
-                    <p>{{$booking->phone}}</p>
-                    <p>{{$booking->address}}</p>
-                    <p>{{implode(', ', [$booking->city, $booking->state, $booking->zip_code, get_country_name($booking->country)])}}</p>
-                </td>
-            </tr>
-        </table>
+        <div class="invoice-table-header">
+            <table>
+                <tr>
+                    <td>
+                        <strong>{{__('Dates:')}}</strong>
+                        <h5>{{__('Issued On:')}}</h5>
+                        <p>{{display_date($booking->created_at)}}</p>
+                        <h5>{{__('Due By:')}}</h5>
+                        <p>{{display_date($booking->end_date)}}</p>
+                    </td>
+                    <td>
+                        <strong>{{__('Billed From:')}}</strong>
+                        {!! setting_item_with_lang("invoice_company_info") !!}
+                        <p>{{setting_item('invoice_company_phone', '+254 762 301 302')}}</p>
+                    </td>
+                    <td>
+                        <strong>{{__('Billed To:')}}</strong>
+                        <p>{{$booking->first_name}} {{$booking->last_name}}</p>
+                        <p>{{$booking->email}}</p>
+                        <p>{{$booking->phone}}</p>
+                        <p>{{$booking->address}}</p>
+                        <p>{{implode(', ', [$booking->city, $booking->state, $booking->zip_code, get_country_name($booking->country)])}}</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
 
         <hr>
         @if(!empty($service->email_new_booking_file))
