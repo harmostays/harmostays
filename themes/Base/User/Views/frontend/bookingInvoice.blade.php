@@ -2,28 +2,61 @@
 
 @push('css')
     <style type="text/css">
-        html,
-        body {
-            background: #f4f4f9;
-            margin: 0;
-            padding: 0;
-            font-family: 'Roboto', Arial, sans-serif;
+            html, body {
+            background: #f0f0f0;
         }
-
+        .bravo_topbar, .bravo_header, .bravo_footer {
+            display: none;
+        }
+        .invoice-amount {
+            margin-top: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px 20px;
+            display: inline-block;
+            text-align: center;
+        }
+        .email_new_booking .b-table {
+            width: 100%;
+        }
+        .email_new_booking .val {
+            text-align: right;
+        }
+        .email_new_booking td,
+        .email_new_booking th {
+            padding: 5px;
+        }
+        .email_new_booking .val table {
+            text-align: left;
+        }
+        .email_new_booking .b-panel-title,
+        .email_new_booking .booking-number,
+        .email_new_booking .booking-status,
+        .email_new_booking .manage-booking-btn {
+            display: none;
+        }
+        .email_new_booking .fsz21 {
+            font-size: 21px;
+        }
+        .table-service-head {
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+        .table-service-head th {
+            padding: 5px 15px;
+        }
         #invoice-print-zone {
-            background: #ffffff;
-            padding: 20px;
-            margin: 60px auto 40px auto;
-            max-width: 900px;
-            border-radius: 12px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            background: white;
+            padding: 15px;
+            margin: 90px auto 40px auto;
+            max-width: 1025px;
         }
-
-        .invoice-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
+        .invoice-company-info{
+            margin-top: 15px;
+        }
+        .invoice-company-info p{
+            margin-bottom: 2px;
+            font-weight: normal;
         }
 
         .invoice-header img {
@@ -41,39 +74,34 @@
             margin-top: 0;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
 
-        table th,
-        table td {
+        invoice-table-header th,
+        invoice-table-header td {
             padding: 10px;
             border: 1px solid #cccccc;
             vertical-align: top;
         }
 
-        table tr td:first-child {
+        invoice-table-header tr td:first-child {
             border-left: none;
             width: 30%;
         }
 
-        table tr td:last-child {
+        invoice-table-header tr td:last-child {
             border-right: none;
             width: 30%;
         }
 
-        table tr td strong {
+        invoice-table-header tr td strong {
             display: block;
             margin-bottom: 15px;
         }
 
-        table tr td h5 {
+        invoice-table-header tr td h5 {
             margin-bottom: 0;
         }
 
-        table tr td p {
+        invoice-table-header tr td p {
             font-size: 14px;
             color: #555;
             font-weight: 600;
@@ -86,34 +114,6 @@
             margin: 20px 0;
         }
 
-        button {
-            background-color: #ff9800;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #e67e22;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .mt20 {
-            margin-top: 20px;
-        }
-
-        @media (max-width: 768px) {
-            .row {
-                flex-direction: column;
-            }
-        }
     </style>
 @endpush
 
@@ -131,7 +131,7 @@
             </div>
         </div>
 
-        <table>
+        <table class="invoice-table-header">
             <tr>
                 <td>
                     <strong>{{__('Dates:')}}</strong>
