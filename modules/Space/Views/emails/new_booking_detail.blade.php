@@ -166,19 +166,22 @@ $lang_local = app()->getLocale();
             <td class="val">
                 <table class="pricing-list" width="100%">
                     <tr>
-                        <td><strong>{{__('Total Reservation Amount')}}</strong></td>
-                        <td class=""><strong style="color: #FA5636">{{format_money($booking->total)}}</strong></td>
+                        <td class="text-right"><strong>{{__('Total Reservation Amount')}}</strong></td>
+                        <td class="text-right"><strong style="color: #FA5636">{{format_money($booking->total)}}</strong></td>
                     </tr>
                     <tr>
-                        <td><strong>{{__('Amount Paid')}}</strong></td>
-                        <td ><strong style="color: #FA5636">{{format_money($booking->paid)}}</strong></td>
+                        <td class="text-right"><strong>{{__('Amount Paid')}}</strong></td>
+                        <td class="text-right"><strong style="color: #FA5636">{{format_money($booking->paid)}}</strong></td>
                     </tr>
                     @if($booking->total > $booking->paid)
                         <tr>
-                            <td><strong>{{__('Amount Due')}}</strong></td>
-                            <td><strong style="color: #FA5636">{{format_money($booking->total - $booking->paid)}}</strong></td>
+                            <td class="text-right"><strong>{{__('Amount Due')}}</strong></td>
+                            <td class="text-right"><strong style="color: #FA5636">{{format_money($booking->total - $booking->paid)}}</strong></td>
                         </tr>
                     @endif
+                    <tr>
+                        <td class="text-center"><i>{{__('All Prices Inclusive of VAT')}}</i></td>
+                    </tr>
                 </table>
             </td>
         </tr>
