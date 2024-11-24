@@ -197,14 +197,13 @@
                 </tr>
             </table>
         </div>
-        <hr>
         @if(!empty($service->email_new_booking_file))
             <div class="email_new_booking">
                 @include($service->email_new_booking_file ?? '')
             </div>
         @endif
         <div class="text-center">
-            <p><strong>{{__('Thank you for booking with Harmo Stays!')}}</strong></p>
+            <p><strong><i>{{__('Thank you for booking with Harmo Stays!')}}</i></strong></p>
         </div>
     </div>
 

@@ -89,17 +89,93 @@ $lang_local = app()->getLocale();
             <td class="label"></td>
             <td class="val">
                 <table class="pricing-list" width="100%">
+                    @php $extra_price = $booking->getJsonMeta('extra_price')@endphp
+
+                    @if(!empty($extra_price))
+                        <tr>
+                            <td colspan="2" class="label-title"><strong>{{__("Extra Prices:")}}</strong></td>
+                        </tr>
+                        <tr class="">
+                            <td colspan="2" class="no-r-padding no-b-border">
+                                <table width="100%">
+                                    @foreach($extra_price as $type)
+                                        <tr>
+                                            <td class="label">{{$type['name']}}:</td>
+                                            <td class="val no-r-padding">
+                                                <strong>{{format_money($type['total'] ?? 0)}}</strong>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </table>
+                            </td>
+                        </tr>
+
+                    @endif
+
+                    @php
+                        $list_all_fee = [];
+                        if(!empty($booking->buyer_fees)){
+                            $buyer_fees = json_decode($booking->buyer_fees , true);
+                            $list_all_fee = $buyer_fees;
+                        }
+                        if(!empty($vendor_service_fee = $booking->vendor_service_fee)){
+                            $list_all_fee = array_merge($list_all_fee , $vendor_service_fee);
+                        }
+                    @endphp
+                    @if(!empty($list_all_fee))
+                        @foreach ($list_all_fee as $item)
+                            @php
+                                $fee_price = $item['price'];
+                                if(!empty($item['unit']) and $item['unit'] == "percent"){
+                                    $fee_price = ( $booking->total_before_fees / 100 ) * $item['price'];
+                                }
+                            @endphp
+                            <tr>
+                                <td class="label">
+                                    {{$item['name_'.$lang_local] ?? $item['name']}}
+                                    <i class="icofont-info-circle" data-toggle="tooltip" data-placement="top" title="{{ $item['desc_'.$lang_local] ?? $item['desc'] }}"></i>
+                                    @if(!empty($item['per_person']) and $item['per_person'] == "on")
+                                        : {{$booking->total_guests}} * {{format_money( $fee_price )}}
+                                    @endif
+                                </td>
+                                <td class="val">
+                                    @if(!empty($item['per_person']) and $item['per_person'] == "on")
+                                        {{ format_money( $fee_price * $booking->total_guests ) }}
+                                    @else
+                                        {{ format_money( $fee_price ) }}
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
+                    @if(!empty($booking->coupon_amount) and $booking->coupon_amount > 0)
+                        <tr>
+                            <td class="label">
+                                {{__("Coupon")}}
+                            </td>
+                            <td class="val">
+                                -{{ format_money($booking->coupon_amount) }}
+                            </td>
+                        </tr>
+                    @endif
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="label"></td>
+            <td class="val">
+                <table class="pricing-list" width="100%">
                     <tr>
-                        <td>{{__('Total Reservation Amount')}}</td>
+                        <td><strong>{{__('Total Reservation Amount')}}</strong></td>
                         <td class=""><strong style="color: #FA5636">{{format_money($booking->total)}}</strong></td>
                     </tr>
                     <tr>
-                        <td>{{__('Amount Paid')}}</td>
+                        <td><strong>{{__('Amount Paid')}}</strong></td>
                         <td ><strong style="color: #FA5636">{{format_money($booking->paid)}}</strong></td>
                     </tr>
                     @if($booking->total > $booking->paid)
                         <tr>
-                            <td>{{__('Amount Due')}}</td>
+                            <td><strong>{{__('Amount Due')}}</strong></td>
                             <td><strong style="color: #FA5636">{{format_money($booking->total - $booking->paid)}}</strong></td>
                         </tr>
                     @endif
